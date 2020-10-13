@@ -1,3 +1,5 @@
+[![Build Status](https://circleci.com/gh/AleBL/nobe-test.svg?style=svg)](https://app.circleci.com/pipelines/github/AleBL/nobe-test)
+
 # README
 
 This README would normally document whatever steps are necessary to get the
