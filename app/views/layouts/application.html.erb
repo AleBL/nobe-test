@@ -6,10 +6,31 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <div class="navbar">
+      <a href=<%= root_path %>><h1>Nobe Test</h1></a>
+
+      <% if user_signed_in? %>
+        <%= "Logged as #{current_user.name}" %>
+
+        <%= link_to "Edit Profile", edit_user_registration_path, class: 'navbar-link' %> |
+        <%= link_to "Sign Out",     destroy_user_session_path,   class: 'navbar-link', method: :delete %>
+      <% else %>
+        <%= link_to "Sign Up",      new_user_registration_path,  class: 'navbar-link'  %> |
+        <%= link_to "Login",        new_user_session_path,       class: 'navbar-link'  %>
+      <% end %>
+    </div>
+
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-info">
+        <%= msg %>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
